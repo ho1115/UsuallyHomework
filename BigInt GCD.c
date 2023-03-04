@@ -33,10 +33,9 @@ int comp (int* a, int* b, int lena, int lenb) {
     if (lena > lenb) {return 0;}
     else if (lenb > lena) {return 1;}
     else {
-        int idx = lena;
-        while (idx != -1) {
-            if (a[idx] == b[idx]) {idx--;}
-            else {return a[idx] > b[idx] ? 0 : 1;}
+        for (int i = lena; i >= 0; i--) {
+            if (a[i] == b[i]) {continue;}
+            else {return a[i] > b[i]? 0 : 1;
         }
         return 2;
     }
