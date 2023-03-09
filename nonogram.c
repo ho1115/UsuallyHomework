@@ -52,7 +52,10 @@ bool paint (int** graph, int** r, int** c, int rlen, int clen, int idx) {
                         }
                         else {graph[idx/clen][idx%clen + 1] = -2;} // tag next cell -2
                     } else if (r[idx/clen][rowCursor] > 1) {
-                        if (graph[idx/clen][idx%clen + 1] == -2) {skip = 1;}
+                        if (graph[idx/clen][idx%clen + 1] == -2) {
+                            if (idx%clen && graph[idx/clen][idx%clen - 1] == 1) {return false;}
+                            else {skip = 1;} 
+                        }
                         else {graph[idx/clen][idx%clen + 1] = 2;}
                     } 
                     if (!skip) {                  
