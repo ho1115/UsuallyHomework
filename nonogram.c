@@ -11,7 +11,7 @@ bool rowValid (int** graph, int** r, int rowsToCheck) {
     return true;
 }
 bool colValid (int** graph, int** c, int colsToCheck) {
-    for (int i = 0; i < colsToCheck; i++) {
+    for (int i = 0; i <= colsToCheck; i++) {
         for (int j = 1; j <= c[i][0]; j++) {
             if (c[i][j]) {return false;}
         }
@@ -33,24 +33,19 @@ bool paint (int** graph, int** r, int** c, int rlen, int clen, int idx) {
     }    
     else {
         int canWhite = graph[idx/clen][idx%clen] == 2 ? 0 : 1;
-        // if not tagged by -2 else can only be painted white
         if (graph[idx/clen][idx%clen] >= 0) {
             int rowCursor = 1, colCursor = 1, skip = 0, rightTag = 0;
             if (idx%clen + 1 < clen) {rightTag = graph[idx/clen][idx%clen + 1];}
-            //while loop to find cur idx of 'o' nums in arr
             while (r[idx/clen][rowCursor] == 0) {rowCursor++;}
             while (c[idx%clen][colCursor] == 0) {colCursor++;}
-            // if there's still 'o's need to be painted else jump to paint white
             if (rowCursor <= r[idx/clen][0] && colCursor <= c[idx%clen][0]) {
-                // if there's enough room for 'o's else false
-                if ((idx%clen + r[idx/clen][rowCursor] <= clen) && (idx/clen + c[idx%clen][colCursor] <= rlen)) {
-                    // if cur 'o' is the last 'o' of one segment of 'o's and not the last cell of one row             
+                if ((idx%clen + r[idx/clen][rowCursor] <= clen) && (idx/clen + c[idx%clen][colCursor] <= rlen)) {           
                     if (r[idx/clen][rowCursor] == 1 && idx%clen < clen-1) {
-                        if (graph[idx/clen][idx%clen + 1] == 2) { //if the next cell needed to be painted black
-                            if (idx%clen && graph[idx/clen][idx%clen - 1] == 1) {return false;}//and there are other 'o's connected in the same row then false
-                            else {skip = 1;} //else try paint this white
+                        if (graph[idx/clen][idx%clen + 1] == 2) { 
+                            if (idx%clen && graph[idx/clen][idx%clen - 1] == 1) {return false;}
+                            else {skip = 1;} 
                         }
-                        else {graph[idx/clen][idx%clen + 1] = -2;} // tag next cell -2
+                        else {graph[idx/clen][idx%clen + 1] = -2;}
                     } else if (r[idx/clen][rowCursor] > 1) {
                         if (graph[idx/clen][idx%clen + 1] == -2) {
                             if (idx%clen && graph[idx/clen][idx%clen - 1] == 1) {return false;}
@@ -73,7 +68,8 @@ bool paint (int** graph, int** r, int** c, int rlen, int clen, int idx) {
                         graph[idx/clen][idx%clen] = 0;
                         if (idx%clen + 1 < clen) {graph[idx/clen][idx%clen + 1] = rightTag;} 
                         if (idx/clen + 1 < rlen) {graph[idx/clen + 1][idx%clen] = 0;}
-                        if (idx%clen - 1 >= 0 && graph[idx/clen][idx%clen - 1] == 1) {return false;}       
+                        if (idx%clen - 1 >= 0 && graph[idx/clen][idx%clen - 1] == 1) {return false;}
+                        if (idx/clen - 1 >= 0 && graph[idx/clen - 1][idx%clen] == 1) {return false;}      
                     }    
                 } else {return false;}
             }  
