@@ -1,3 +1,5 @@
+#nm2023 hw3-2 by r11944043
+
 function spd = genSPD (n) # by Daryl at https://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab
   spd = rand(n);
   spd = 0.5 * (spd+spd');
