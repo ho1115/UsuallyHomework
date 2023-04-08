@@ -157,7 +157,7 @@ if(abs(L - rightL) <= 1e-8)
 end
 
 #comparing elapsed time
-fprintf('different elapsed time of computing 10*10 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', tntime, totime, tttime);
-fprintf('different elapsed time of computing 100*100 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', hntime, hotime, httime);
-fprintf('different elapsed time of computing 1000*1000 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', thntime, thotime, thttime);
-fprintf('different elapsed time of computing 4000*4000 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', fntime, fotime, fttime);
+fprintf('different elapsed time of computing 10*10 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', tnTime, toTime, ttTime);
+fprintf('different elapsed time of computing 100*100 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', hnTime, hoTime, htTime);
+fprintf('different elapsed time of computing 1000*1000 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', thnTime, thoTime, thtTime);
+fprintf('different elapsed time of computing 4000*4000 matrix\n    No Loop: %d\n    One level loop: %d\n    Two level loop: %d\n\n', fnTime, foTime, ftTime);
