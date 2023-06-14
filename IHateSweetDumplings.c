@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct TreeNode node;
-
+// -static -std=c11 -o
 struct TreeNode {
-  int ap; int bp; int dif; int leftCnt; int rightCnt; int hei;
+  int ap; int bp; int dif; int leftCnt; int hei;
   long long oddtotal; long long eventotal;
   node* left;
   node* right;
